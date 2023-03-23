@@ -3,7 +3,10 @@ from readmdict import MDX
 
 # https://github.com/ffreemt/readmdict
 
-def get_full_dict(dict_fn: str) -> List[str]:
+dict_file_name = "resources/weishi_v3/weishi_eng_cn_dict.mdx"
+from typing import List
+
+def get_full_dict_words(dict_fn: str) -> List[str]:
     if not dict_fn.endswith(".mdx"):
         raise Exception("dict file should be end with .mdx")
     
@@ -16,5 +19,22 @@ def get_full_dict(dict_fn: str) -> List[str]:
     return all_dict_word
 
 
+def get_full_dict(dict_fn: str) -> dict:
+    if not dict_fn.endswith(".mdx"):
+        raise Exception("dict file should be end with .mdx")
+    
+    mdx = {}
+    items = [*MDX(dict_fn).items()]
+
+    for key, value in items:
+        key = key.decode('utf-8')
+        value = value.decode('utf-8')
+        if " " not in key:
+            mdx[key] = value
+
+    return mdx
+
+
 if __name__ == '__main__':
-    print(mdx['a big fish in a little pond'])
+    mdx = get_full_dict(dict_file_name)
+    print(mdx['abandon'])
