@@ -21,3 +21,9 @@ def get_word_frequency(words):
     """
     freq_dict = dict(Counter(words))
     return dict(sorted(freq_dict.items(), key=lambda item: item[1], reverse=True))
+
+
+def save_dict(kv: dict, file_path: str):
+    with open(file_path, "w") as fp:
+        for k, v in kv.items():
+            fp.write(f"{k} {v}\n")

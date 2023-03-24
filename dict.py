@@ -109,9 +109,9 @@ def save_etymology(word_ety_dict: dict, book_name: str):
 
 if __name__ == "__main__":
     # get all the dict words
-    full_dict_words = get_full_dict_words(dict_file_name)
-    with open(full_dict_words_fn, "w") as fp:
+    full_dict_words = get_full_dict_words(dict_mdx_path)
+    with open(full_dict_words_path, "w") as fp:
         fp.write("\n".join(full_dict_words))
 
     
-    save_full_etymology(etymology_fn)
+    save_full_etymology(etymology_mdx_path)
