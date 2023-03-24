@@ -1,4 +1,5 @@
-from settings import full_dict_words_fn, book_word_freq_path
+from dict import get_formation_map
+from settings import full_dict_words_fn, book_word_freq_path, formation_fn
 from pdfminer.high_level import extract_text
 from utils import split_words, get_word_frequency
 import sys, os
@@ -46,5 +47,5 @@ if __name__ == "__main__":
     write_word_freq(book_word_freq)
     print("finish get the word freq from words")
 
-    
-
+    # get formation map
+    formation_map = get_formation_map(formation_fn)
